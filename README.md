@@ -15,7 +15,10 @@ This is the code for our paper "Explicitly Aligned Multi-View Breast Cancer Risk
 
 ## Introduction
 
+
+
 ## Method
+
 
 
 ## Datasets
@@ -24,6 +27,17 @@ We used two large, publicly available mammography datasets :
 - **Cohort of Screen-Aged Women Case Control (CSAW-CC)**: https://snd.se/en/catalogue/dataset/2021-204-1
 
 ## Key findings of the paper
+
+❌ Existing Gap: Current breast cancer risk prediction models do not effectively integrate complementary information from multiple mammographic views and longitudinal examinations, despite both being routinely available in screening.
+
+🛠️ Proposed Solution: FlexLMV-Net jointly models multi-view and longitudinal mammograms while supporting a variable number of prior examinations, enabling flexible use of available patient history.
+
+🚀 Novelty: Combines explicit temporal feature alignment, feature-aware temporal fusion, dual-stream attention, and multi-view learning to capture longitudinal breast changes and complementary CC/MLO information.
+
+📊 Robust Performance: Demonstrates consistent improvements across breast density categories and cancer subgroups, including invasive and non-invasive cancers.
+
+🏆 Outperforms SOTA: FlexLMV-Net consistently outperforms state-of-the-art approaches, including Mirai, VMRA-MaR, OA-BreaCR, and ImgFeatAlign, across C-index and AUC metrics over multiple follow-up years.
+
 
 ## Results
 #### Comparison with state of the art methods: 
