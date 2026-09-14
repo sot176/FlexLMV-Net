@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import DataLoader
 from accelerate import Accelerator
 
-from dataloaders import BreastCancerRiskDatasetCSAWCC, BreastCancerRiskDataset
+from dataloaders import BreastCancerRiskDataset_multiple_Prior_CSAWCC, BreastCancerRiskDataset_multiple_Prior_EMBED
 from evaluate import test_risk
 
 
@@ -30,6 +30,16 @@ def parse_arguments():
     parser.add_argument("--shuffle", default=False, type=bool)  # Corrected spelling
     parser.add_argument("--pin_memory", default=True, type=bool)
     parser.add_argument("--seed", default=2023, type=int)
+    parser.add_argument('--aggregation_mode', type=str, default='none', help='Use learned gated aggregation instead of mean/sum')
+    parser.add_argument('--max_priors', type=int, default=2, help=' Maximum number of prior exams.')
+    parser.add_argument('--n_priors', type=int, default=2, help='Number of priors actually used for test evaluation.')
+    parser.add_argument('--min_num_prior_img', type=int, default=1, help='Minimum number of prior exams for train/validation.')
+    parser.add_argument('--aggregator_hidden_dim', type=int, default=32, help='Hidden dimension for the aggregator network (only relevant if --use_multiple_prior_img is set)')
+    parser.add_argument(
+        "--fixed_cohort",
+        action="store_true",
+        help="Use a fixed test cohort with at least max_priors prior exams."
+    )
 
     return parser.parse_args()
 
@@ -70,23 +80,26 @@ def main():
 
     if args.dataset == "CSAW":
         print("Use CSAW-CC dataset")
-        test_dataset = BreastCancerRiskDatasetCSAWCC(
-            args.csv_file, args.data_root, "test", transforms=None
-        )
+        test_dataset = BreastCancerRiskDataset_multiple_Prior_CSAWCC(
+                        args.csv_file, args.data_root, "test", transforms=None, max_priors=args.max_priors, min_priors=args.min_num_prior_img, n_priors=args.n_priors, fixed_cohort=args.fixed_cohort  
+            )
     else:
         print("Use EMBED dataset")
-        test_dataset  = BreastCancerRiskDataset(
-            args.csv_file, args.data_root, "test", transforms=None
-        )
+        test_dataset = BreastCancerRiskDataset_multiple_Prior_EMBED(
+                        args.csv_file, args.data_root, "test", transforms=None, max_priors=args.max_priors, min_priors=args.min_num_prior_img, n_priors=args.n_priors, fixed_cohort=args.fixed_cohort  
+            )
 
 
     test_loader = DataLoader(
-        test_dataset,
-        batch_size=args.batch_size,
-        num_workers=args.num_workers,
-        shuffle=args.shuffle,
-        pin_memory=args.pin_memory
-    )
+                test_dataset,
+                batch_size=args.batch_size,
+                num_workers=args.num_workers,
+                shuffle=args.shuffle,
+                pin_memory=args.pin_memory,
+                collate_fn=custom_collate
+    
+            )
+    
 
     # --- Model Path Logic ---
     model_filename = f"best_model_risk_prediction_id-{args.id_training}.pth"

@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore", category=SourceChangeWarning)
 
 from accelerate import Accelerator
 
-from dataloaders import BreastCancerRiskDataset, BreastCancerRiskDatasetCSAWCC
+from dataloaders import BreastCancerRiskDataset_multiple_Prior_CSAWCC, BreastCancerRiskDataset_multiple_Prior_EMBED
 
 from train import train_val
 
@@ -73,6 +73,10 @@ def parse_arguments():
     parser.add_argument("--num_epochs", default=100, type=int)
     parser.add_argument("--seed", default=2023, type=int)
     parser.add_argument("--weight_decay", default=1e-5, type=float)
+    parser.add_argument('--aggregation_mode', type=str, default='none', help='Use learned gated aggregation instead of mean/sum')
+    parser.add_argument('--max_priors', type=int, default=2, help=' Maximum number of prior exams.')
+    parser.add_argument('--min_num_prior_img', type=int, default=0, help='Minimum number of prior exams for train/validation.')
+    parser.add_argument('--aggregator_hidden_dim', type=int, default=64, help='Hidden dimension for the aggregator network (only relevant if --use_multiple_prior_img is set)')
 
 
     args = parser.parse_args()
@@ -139,19 +143,19 @@ def main():
 
     if args.dataset == "CSAW":
         print("Use CSAW-CC dataset")
-        train_dataset = BreastCancerRiskDatasetCSAWCC(
-            args.csv_file, args.data_root, "train", transforms=train_transform
+        train_dataset = BreastCancerRiskDataset_multiple_Prior_CSAWCC(
+            args.csv_file, args.data_root, "train", transforms=train_transform, max_priors=args.max_priors, min_priors=args.min_num_prior_img
         )
-        validation_dataset = BreastCancerRiskDatasetCSAWCC(
-            args.csv_file, args.data_root, "val", transforms=None
+        validation_dataset = BreastCancerRiskDataset_multiple_Prior_CSAWCC(
+            args.csv_file, args.data_root, "val", transforms=None, max_priors=args.max_priors, min_priors=args.min_num_prior_img
         )
     else:
         print("Use EMBED dataset")
-        train_dataset = BreastCancerRiskDataset(
-            args.csv_file, args.data_root, "train", transforms=train_transform
+        train_dataset = BreastCancerRiskDataset_multiple_Prior_EMBED(
+            args.csv_file, args.data_root, "train", transforms=train_transform, max_priors=args.max_priors, min_priors=args.min_num_prior_img
         )
-        validation_dataset = BreastCancerRiskDataset(
-            args.csv_file, args.data_root, "val", transforms=None
+        validation_dataset = BreastCancerRiskDataset_multiple_Prior_EMBED(
+            args.csv_file, args.data_root, "val", transforms=None, max_priors=args.max_priors, min_priors=args.min_num_prior_img
         )
 
     train_loader = DataLoader(

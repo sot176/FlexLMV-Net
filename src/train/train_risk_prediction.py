@@ -3,7 +3,7 @@ import torch
 import wandb
 from accelerate import Accelerator
 
-from models import MammoRegNet, LongitudinalMultiViewRiskModel
+from models import MammoRegNet, LongitudinalMultiViewRiskModel_multiple_prior
 from utils import create_logger, bootstrap_auc, bootstrap_c_index
 from train_utils import train_one_epoch, evaluate, get_model_size, get_param_groups, linear_warmup, load_checkpoint, \
     save_checkpoint
@@ -25,8 +25,8 @@ def train_val(args, train_loader, valid_loader, path_loggger, path_model, accele
     model_reg.load_state_dict(new_checkpoint)
     model_reg.eval()
 
+    model_risk = LongitudinalMultiViewRiskModel_multiple_prior(mammo_reg_net=model_reg, finetune=args.finetune_all, dropout = args.dropout, drop_path=args.drop_path,  aggregation_mode=getattr(args, 'aggregation_mode', 'gated'), num_prior_img=args.max_priors, aggregator_hidden_dim=args.aggregator_hidden_dim, max_followup=5)
 
-    model_risk = LongitudinalMultiViewRiskModel( mammo_reg_net=model_reg, max_followup=5, finetune_all = args.finetune_all)
     get_model_size(model_risk, accelerator)
 
 

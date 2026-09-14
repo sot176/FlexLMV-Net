@@ -49,6 +49,7 @@ def train_one_epoch(args, model_risk, train_loader, optimizer, accelerator,  war
 
     avg_risk_loss = running_risk_loss / len(train_loader)
     c_index, auc_results = 0, {}
+    
     # Calculate metrics on the main process
     if accelerator.is_main_process:
         preds = torch.cat(all_preds).cpu().numpy()

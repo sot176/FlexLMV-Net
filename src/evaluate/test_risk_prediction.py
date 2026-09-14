@@ -19,7 +19,7 @@ from utils import (
     get_censoring_dist,
 )
 
-from models import MammoRegNet, LongitudinalMultiViewRiskModel
+from models import MammoRegNet, LongitudinalMultiViewRiskModel_multiple_prior
 
 
 def to_json_safe(obj):
@@ -63,7 +63,8 @@ def test_risk(
     model_reg.load_state_dict({k.replace("module.", ""): v for k, v in checkpoint_reg.items()})
 
     # Load risk model
-    model_risk = LongitudinalMultiViewRiskModel(mammo_reg_net=model_reg, max_followup=5)
+    model_risk = LongitudinalMultiViewRiskModel_multiple_prior(mammo_reg_net=model_reg,  finetune=False,  aggregation_mode=getattr(args, 'aggregation_mode', 'gated'), num_prior_img=args.max_priors, aggregator_hidden_dim=args.aggregator_hidden_dim, max_followup=5)
+
     checkpoint_risk = torch.load(path_model, map_location="cpu")
     model_risk.load_state_dict({k.replace("module.", ""): v for k, v in checkpoint_risk.items()})
     model_risk.eval()
