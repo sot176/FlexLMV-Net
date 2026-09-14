@@ -19,7 +19,13 @@ This is the code for our paper "Explicitly Aligned Multi-View Breast Cancer Risk
 
 ## Method
 
+FlexLMV-Net is a longitudinal multi-view deep learning model for five-year breast cancer risk prediction from screening mammograms. It jointly models current and prior CC/MLO views while supporting a variable number of prior examinations.
 
+### Key components:
+
+**Explicit longitudinal multi-view alignment:** All prior mammograms are aligned to the current examination using pretrained MammoRegNet, with aligned prior and sequential difference features adaptively fused using spatial attention and time-aware feature weighting to support a variable number of prior examinations.
+**Multi-View Dual-stream attention:** Self- and cross-view attention jointly capture within-view and complementary CC/MLO information.
+**Risk prediction Head:** Fused multi-view representations are used to predict five-year breast cancer risk with a cumulative probability formulation.
 
 ## Datasets
 We used two large, publicly available mammography datasets :
