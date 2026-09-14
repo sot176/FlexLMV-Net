@@ -29,6 +29,11 @@ FlexLMV-Net is a longitudinal multi-view deep learning model for five-year breas
 
 **3) Risk prediction Head:** Fused multi-view representations are used to predict five-year breast cancer risk with a cumulative probability formulation.
 
+
+<p align="center">
+  <img src="Figures/FlexLMV-Net.png" alt="Image 1" width="700"/>
+</p>
+
 ## 3. Datasets
 We used two large, publicly available mammography datasets :
 - **Emory Breast Imaging Dataset (EMBED)**: https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview}
