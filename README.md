@@ -13,7 +13,7 @@ This is the code for our paper "Explicitly Aligned Multi-View Breast Cancer Risk
 6. ▶️ [Reproduction of the results](#reproduction-of-the-results)  
 7. 📄 [Citation](#citation)  
 
-## Introduction
+## 1. Introduction
 
 
 
