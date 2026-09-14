@@ -14,7 +14,7 @@ This is the code for our paper "Explicitly Aligned Multi-View Breast Cancer Risk
 7. 📄 [Citation](#citation)  
 
 ## 1. Introduction
-
+Breast cancer risk prediction can benefit from longitudinal mammograms and complementary CC and MLO views. However, existing approaches often rely on a fixed number of prior examinations and do not explicitly account for anatomical differences across time. FlexLMV-Net addresses these limitations by jointly modeling multi-view longitudinal mammograms, aligning all prior examinations to the current examination, and supporting a variable number of prior exams for flexible risk prediction. Evaluated on the EMBED and CSAW-CC datasets, FlexLMV-Net demonstrates improved breast cancer risk prediction across multiple follow-up years, breast density categories, and cancer subgroups. These results highlight the potential of flexible longitudinal multi-view modeling for improved risk stratification and personalized breast cancer screening.
 
 
 ## 2. Method
