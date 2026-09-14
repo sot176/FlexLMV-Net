@@ -64,7 +64,7 @@ Run the following script `scripts/test.sh`
 
 ## Citation
 ```bibtex
-@inproceedings{lmv_net_2026,
+@inproceedings{flexlmv_net_2026,
 author = {Thrun, Solveig and Sun, Zijun and  Salahuddin, Suaiba A. and Wickstrøm, Kristoffer and Wetzer, Elisabeth and Hansen, Stine, and Jenssen, Robert and Kampffmeyer, Michael},
 title={Explicitly Aligned Multi-View Breast Cancer Risk Prediction from Variable-Length Screening Histories},
 }
