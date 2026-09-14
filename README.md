@@ -17,7 +17,7 @@ This is the code for our paper "Explicitly Aligned Multi-View Breast Cancer Risk
 
 
 
-## Method
+## 2. Method
 
 FlexLMV-Net is a longitudinal multi-view deep learning model for five-year breast cancer risk prediction from screening mammograms. It jointly models current and prior CC/MLO views while supporting a variable number of prior examinations.
 
@@ -29,12 +29,12 @@ FlexLMV-Net is a longitudinal multi-view deep learning model for five-year breas
 
 **3) Risk prediction Head:** Fused multi-view representations are used to predict five-year breast cancer risk with a cumulative probability formulation.
 
-## Datasets
+## 3. Datasets
 We used two large, publicly available mammography datasets :
 - **Emory Breast Imaging Dataset (EMBED)**: https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview}
 - **Cohort of Screen-Aged Women Case Control (CSAW-CC)**: https://snd.se/en/catalogue/dataset/2021-204-1
 
-## Key findings of the paper
+## 4. Key findings of the paper
 
 ❌ **Existing Gap:** Current breast cancer risk prediction models do not effectively integrate complementary information from multiple mammographic views and longitudinal examinations, despite both being routinely available in screening.
 
@@ -47,7 +47,7 @@ We used two large, publicly available mammography datasets :
 🏆 **Outperforms SOTA:** FlexLMV-Net consistently outperforms state-of-the-art approaches, including Mirai, VMRA-MaR, OA-BreaCR, and ImgFeatAlign, across C-index and AUC metrics over multiple follow-up years.
 
 
-## Results
+## 5. Results
 #### Comparison with state of the art methods: 
 
 
@@ -56,7 +56,7 @@ We used two large, publicly available mammography datasets :
 
 
 
-##  Reproduction of the results
+##  6. Reproduction of the results
 For reproducing the results follow the instructions below:
 
 **Important**: for each script in the `scripts` folder, make sure you update the paths to load the correct datasets and export the results in your favorite directory.
@@ -84,7 +84,7 @@ Run the following script `scripts/train.sh`
 Run the following script `scripts/test.sh`
 
 
-## Citation
+## 7. Citation
 ```bibtex
 @inproceedings{flexlmv_net_2026,
 author = {Thrun, Solveig and Sun, Zijun and  Salahuddin, Suaiba A. and Wickstrøm, Kristoffer and Wetzer, Elisabeth and Hansen, Stine, and Jenssen, Robert and Kampffmeyer, Michael},
