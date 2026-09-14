@@ -28,15 +28,15 @@ We used two large, publicly available mammography datasets :
 
 ## Key findings of the paper
 
-❌ Existing Gap: Current breast cancer risk prediction models do not effectively integrate complementary information from multiple mammographic views and longitudinal examinations, despite both being routinely available in screening.
+❌ **Existing Gap:** Current breast cancer risk prediction models do not effectively integrate complementary information from multiple mammographic views and longitudinal examinations, despite both being routinely available in screening.
 
-🛠️ Proposed Solution: FlexLMV-Net jointly models multi-view and longitudinal mammograms while supporting a variable number of prior examinations, enabling flexible use of available patient history.
+🛠️ **Proposed Solution:** FlexLMV-Net jointly models multi-view and longitudinal mammograms while supporting a variable number of prior examinations, enabling flexible use of available patient history.
 
-🚀 Novelty: Combines explicit temporal feature alignment, feature-aware temporal fusion, dual-stream attention, and multi-view learning to capture longitudinal breast changes and complementary CC/MLO information.
+🚀 **Novelty:** Combines explicit temporal feature alignment, feature-aware temporal fusion, dual-stream attention, and multi-view learning to capture longitudinal breast changes and complementary CC/MLO information.
 
-📊 Robust Performance: Demonstrates consistent improvements across breast density categories and cancer subgroups, including invasive and non-invasive cancers.
+📊 **Robust Performance:** Demonstrates consistent improvements across breast density categories and cancer subgroups, including invasive and non-invasive cancers.
 
-🏆 Outperforms SOTA: FlexLMV-Net consistently outperforms state-of-the-art approaches, including Mirai, VMRA-MaR, OA-BreaCR, and ImgFeatAlign, across C-index and AUC metrics over multiple follow-up years.
+🏆 **Outperforms SOTA:** FlexLMV-Net consistently outperforms state-of-the-art approaches, including Mirai, VMRA-MaR, OA-BreaCR, and ImgFeatAlign, across C-index and AUC metrics over multiple follow-up years.
 
 
 ## Results
