@@ -31,7 +31,7 @@ FlexLMV-Net is a longitudinal multi-view deep learning model for five-year breas
 
 
 <p align="center">
-  <img src="Figures/FlexLMV-Net.png" alt="Image 1" width="700"/>
+  <img src="Figures/FlexLMV-Net.png" alt="Image 1" width="500"/>
 </p>
 
 ## 3. Datasets
