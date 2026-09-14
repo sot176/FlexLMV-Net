@@ -23,11 +23,11 @@ FlexLMV-Net is a longitudinal multi-view deep learning model for five-year breas
 
 ### Key components:
 
-**1)Explicit longitudinal multi-view alignment:** All prior mammograms are aligned to the current examination using pretrained MammoRegNet, with aligned prior and sequential difference features adaptively fused using spatial attention and time-aware feature weighting to support a variable number of prior examinations.
+**1) Explicit longitudinal multi-view alignment:** All prior mammograms are aligned to the current examination using pretrained MammoRegNet, with aligned prior and sequential difference features adaptively fused using spatial attention and time-aware feature weighting to support a variable number of prior examinations.
 
-**2)Multi-View Dual-stream attention:** Self- and cross-view attention jointly capture within-view and complementary CC/MLO information.
+**2) Multi-View Dual-stream attention:** Self- and cross-view attention jointly capture within-view and complementary CC/MLO information.
 
-**3)Risk prediction Head:** Fused multi-view representations are used to predict five-year breast cancer risk with a cumulative probability formulation.
+**3) Risk prediction Head:** Fused multi-view representations are used to predict five-year breast cancer risk with a cumulative probability formulation.
 
 ## Datasets
 We used two large, publicly available mammography datasets :
