@@ -55,10 +55,19 @@ We used two large, publicly available mammography datasets :
 ## 5. Results
 #### Comparison with state of the art methods: 
 
-
+<p align="center">
+  <img src="Figures/Fig1.png" alt="Image 1" width="600"/>
+</p>
 
 #### Performance across density categories and cancer subgroups
 
+<p align="center">
+  <img src="Figures/Fig2.png" alt="Image 1" width="600"/>
+</p>
+
+<p align="center">
+  <img src="Figures/Fig3.png" alt="Image 1" width="600"/>
+</p>
 
 
 ##  6. Reproduction of the results
